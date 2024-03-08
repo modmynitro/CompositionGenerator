@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositionGenerator", "CompositionGenerator\CompositionGenerator.csproj", "{13C3BB20-3811-4B58-9211-14C12E79EADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositionGenerator.Tests", "CompositionGenerator.Tests\CompositionGenerator.Tests.csproj", "{6C1149DB-D2FA-443D-911E-E1AE07ACA203}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositionGenerator.Attributes", "CompositionGenerator.Attributes\CompositionGenerator.Attributes.csproj", "{90BBD006-BA7D-4973-81C8-CAE197E465F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13C3BB20-3811-4B58-9211-14C12E79EADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C3BB20-3811-4B58-9211-14C12E79EADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C3BB20-3811-4B58-9211-14C12E79EADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C3BB20-3811-4B58-9211-14C12E79EADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C1149DB-D2FA-443D-911E-E1AE07ACA203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C1149DB-D2FA-443D-911E-E1AE07ACA203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C1149DB-D2FA-443D-911E-E1AE07ACA203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C1149DB-D2FA-443D-911E-E1AE07ACA203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90BBD006-BA7D-4973-81C8-CAE197E465F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90BBD006-BA7D-4973-81C8-CAE197E465F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90BBD006-BA7D-4973-81C8-CAE197E465F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90BBD006-BA7D-4973-81C8-CAE197E465F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

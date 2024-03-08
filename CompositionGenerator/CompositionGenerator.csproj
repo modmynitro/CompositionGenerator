@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
+        <LangVersion>latest</LangVersion>
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <RootNamespace>MoDMyNitro.SourceGenerators.Composition</RootNamespace>
+        <AssemblyName>MoDMyNitro.SourceGenerators.Composition</AssemblyName>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <PolySharpExcludeGeneratedTypes>System.Runtime.CompilerServices.ModuleInitializerAttribute;System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute</PolySharpExcludeGeneratedTypes>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="CompositionGenerator.Tests" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
+        <PackageReference Include="PolySharp" Version="1.14.1">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="PrettyCode.StringBuilder" Version="1.0.0" />
+    </ItemGroup>
+
+    <!-- Reference the attributes from the generator to compile against them -->
+    <!-- Ensure we specify PrivateAssets so the NuGet doesn't have any dependencies -->
+    <ItemGroup>
+        <ProjectReference Include="..\CompositionGenerator.Attributes\CompositionGenerator.Attributes.csproj" PrivateAssets="All" />
+    </ItemGroup>
+    
+    <!-- This ensures the library will be packaged as a source generator when we use `dotnet pack` -->
+    <ItemGroup>
+        <!-- Pack the generator dll in the analyzers/dotnet/cs path -->
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+        
+        <!-- Pack the attributes dll in the analyzers/dotnet/cs path -->
+        <None Include="$(OutputPath)\CompositionGenerator.Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+
+        <!-- Pack the attributes dll in the lib\netstandard2.0 path -->
+        <None Include="$(OutputPath)\CompositionGenerator.Attributes.dll" Pack="true" PackagePath="lib/netstandard2.0" Visible="false" />
+    </ItemGroup>
+</Project>
