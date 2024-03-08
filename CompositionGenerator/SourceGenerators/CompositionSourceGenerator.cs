@@ -37,7 +37,7 @@ public class CompositionSourceGenerator : IIncrementalGenerator
 
             var fullName = attributeSymbol?.ConstructedFrom.ToDisplayString();
 
-            if (fullName is "CompositionGenerator.Attributes.CompositionAttribute" &&
+            if (fullName is "MoDMyNitro.SourceGenerators.Composition.Attributes.CompositionAttribute" &&
                 attribute.ConstructorArguments[0] is { Value: INamedTypeSymbol typeSymbol })
             {
                 yield return typeSymbol;
@@ -146,7 +146,7 @@ public class CompositionSourceGenerator : IIncrementalGenerator
         }
     }
 
-    private record Target(
+    private sealed record Target(
         FieldDeclarationSyntax FieldDeclaration,
         IReadOnlyList<INamedTypeSymbol> Compositions);
 }
