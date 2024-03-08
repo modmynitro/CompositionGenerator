@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>MoDMyNitro.SourceGenerators.Composition.Attributes</RootNamespace>
+        <AssemblyName>MoDMyNitro.SourceGenerators.Composition.Attributes</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="CompositionGenerator.Tests" />
+    </ItemGroup>
+
+</Project>
