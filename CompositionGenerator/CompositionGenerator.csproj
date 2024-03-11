@@ -10,6 +10,14 @@
         <RootNamespace>MoDMyNitro.SourceGenerators.Composition</RootNamespace>
         <AssemblyName>MoDMyNitro.SourceGenerators.Composition</AssemblyName>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <Pack>true</Pack>
+        <Version>0.0.0-noRelease</Version>
+        <Authors>modmynitro</Authors>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/modmynitro/CompositionGenerator/tree/main</RepositoryUrl>
+    </PropertyGroup
     
     <PropertyGroup>
         <PolySharpExcludeGeneratedTypes>System.Runtime.CompilerServices.ModuleInitializerAttribute;System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute</PolySharpExcludeGeneratedTypes>
