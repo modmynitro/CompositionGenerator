@@ -24,5 +24,7 @@ jobs:
         run: dotnet build --no-restore --configuration Release /property:Version=${VERSION}
       - name: Test
         run: dotnet test --no-build --verbosity normal
+      - name: Pack
+        run: dotnet pack --no-build --verbosity normal
       - name: Push Nuget
-        run: nuget push YourPackage.nupkg -Source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+        run: nuget push ./CompositionGenerator/bin/Release/MoDMyNitro.SourceGenerators.Composition.${VERSION}.nupkg -Source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}

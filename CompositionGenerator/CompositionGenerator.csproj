@@ -49,9 +49,9 @@
         <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
         
         <!-- Pack the attributes dll in the analyzers/dotnet/cs path -->
-        <None Include="$(OutputPath)\CompositionGenerator.Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+        <None Include="$(OutputPath)\MoDMyNitro.SourceGenerators.Composition.Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 
         <!-- Pack the attributes dll in the lib\netstandard2.0 path -->
-        <None Include="$(OutputPath)\CompositionGenerator.Attributes.dll" Pack="true" PackagePath="lib/netstandard2.0" Visible="false" />
+        <None Include="$(OutputPath)\MoDMyNitro.SourceGenerators.Composition.Attributes.dll" Pack="true" PackagePath="lib/netstandard2.0" Visible="false" />
     </ItemGroup>
 </Project>
