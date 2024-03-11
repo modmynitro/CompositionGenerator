@@ -17,7 +17,7 @@
         <Authors>modmynitro</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/modmynitro/CompositionGenerator/tree/main</RepositoryUrl>
-    </PropertyGroup
+    </PropertyGroup>
     
     <PropertyGroup>
         <PolySharpExcludeGeneratedTypes>System.Runtime.CompilerServices.ModuleInitializerAttribute;System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute</PolySharpExcludeGeneratedTypes>
