@@ -12,7 +12,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Pack>true</Pack>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Version>0.0.0-noRelease</Version>
         <Authors>modmynitro</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
