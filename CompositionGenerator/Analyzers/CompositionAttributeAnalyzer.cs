@@ -17,8 +17,6 @@ public sealed class CompositionAttributeAnalyzer : DiagnosticAnalyzer
         context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.ReportDiagnostics);
         context.EnableConcurrentExecution();
         context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Field);
-        
-        throw new NotImplementedException();
     }
 
     private void AnalyzeSymbol(SymbolAnalysisContext obj)
@@ -27,7 +25,7 @@ public sealed class CompositionAttributeAnalyzer : DiagnosticAnalyzer
 
         var compositions = CompositionSourceGenerator.GetCompositions(fieldSymbol).ToList();
         
-        if (compositions is { Count: < 1 })
+        if (compositions is { Count: < 2 })
             return;
 
         if (fieldSymbol.DeclaringSyntaxReferences
