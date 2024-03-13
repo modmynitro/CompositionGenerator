@@ -18,7 +18,7 @@ jobs:
       - name: Tag invalid
         if: steps.version.outputs.is_valid == 'false'
         run: exit 1
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Verify commit exists in origin/main
         if: steps.version.outputs.is_stable == 'true'
         run: |

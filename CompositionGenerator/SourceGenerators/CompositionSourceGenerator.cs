@@ -1,6 +1,8 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.Reflection;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Modmynitro.SourceGenerators.Composition.Attributes;
 using Modmynitro.SourceGenerators.Composition.Extensions;
 
 namespace Modmynitro.SourceGenerators.Composition.SourceGenerators;
@@ -11,6 +13,8 @@ namespace Modmynitro.SourceGenerators.Composition.SourceGenerators;
 [Generator]
 public class CompositionSourceGenerator : IIncrementalGenerator
 {
+    private static readonly string AttributeName = typeof(CompositionAttribute).FullName ?? string.Empty;
+    
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
         var classDeclaration = context.SyntaxProvider
@@ -36,9 +40,8 @@ public class CompositionSourceGenerator : IIncrementalGenerator
             var attributeSymbol = attribute.AttributeClass;
 
             var fullName = attributeSymbol?.ConstructedFrom.ToDisplayString();
-
-            if (fullName is "MoDMyNitro.SourceGenerators.Composition.Attributes.CompositionAttribute" &&
-                attribute.ConstructorArguments[0] is { Value: INamedTypeSymbol typeSymbol })
+            
+            if (fullName == AttributeName && attribute.ConstructorArguments[0] is { Value: INamedTypeSymbol typeSymbol })
             {
                 yield return typeSymbol;
             }
