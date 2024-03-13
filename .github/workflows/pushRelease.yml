@@ -35,4 +35,4 @@ jobs:
       - name: Test
         run: dotnet test --no-build --configuration Release --verbosity normal
       - name: Push Nuget
-        run: dotnet nuget push ./CompositionGenerator/bin/Release/Modmynitro.SourceGenerators.Composition.${{ steps.version.outputs.full_without_prefix }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push /home/runner/work/CompositionGenerator/CompositionGenerator/CompositionGenerator/bin/Release/Modmynitro.SourceGenerators.Composition.${{ steps.version.outputs.full_without_prefix }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
