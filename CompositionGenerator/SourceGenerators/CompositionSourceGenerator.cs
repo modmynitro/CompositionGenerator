@@ -1,9 +1,9 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using MoDMyNitro.SourceGenerators.Composition.Extensions;
+using Modmynitro.SourceGenerators.Composition.Extensions;
 
-namespace MoDMyNitro.SourceGenerators.Composition.SourceGenerators;
+namespace Modmynitro.SourceGenerators.Composition.SourceGenerators;
 
 /// <summary>
 /// https://andrewlock.net/creating-a-source-generator-part-1-creating-an-incremental-source-generator/
@@ -66,14 +66,14 @@ public class CompositionSourceGenerator : IIncrementalGenerator
         if (symbol is not IFieldSymbol fieldSymbol)
             return null;
 
-        compositions.AddRange(GetCompositions(fieldSymbol));
+        compositions.AddRange(GetCompositions(fieldSymbol).Distinct(SymbolEqualityComparer<INamedTypeSymbol>.Default));
 
         if (compositions.Count == 0)
             return null;
 
         return new(
             fieldDeclarationSyntax,
-            compositions.Distinct(SymbolEqualityComparer<INamedTypeSymbol>.Default).ToList());
+            compositions);
     }
 
     private static void Execute(
@@ -102,9 +102,12 @@ public class CompositionSourceGenerator : IIncrementalGenerator
 
                 if (interfaceSymbol.IsGenericType)
                 {
-                    var fieldSymbol = (IFieldSymbol)compilation.GetSemanticModel(target.FieldDeclaration.SyntaxTree)
-                        .GetDeclaredSymbol(target.FieldDeclaration.Declaration.Variables[0]);
+                    var fieldSymbol = compilation.GetSemanticModel(target.FieldDeclaration.SyntaxTree)
+                        .GetDeclaredSymbol(target.FieldDeclaration.Declaration.Variables[0]) as IFieldSymbol;
 
+                    if (fieldSymbol is null)
+                        continue;
+                    
                     var unbound = interfaceSymbol.ConstructUnboundGenericType();
 
                     usedInterfaceSymbol = ((INamedTypeSymbol)fieldSymbol.Type).Interfaces

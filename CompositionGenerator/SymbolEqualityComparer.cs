@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace MoDMyNitro.SourceGenerators.Composition;
+namespace Modmynitro.SourceGenerators.Composition;
 
 public class SymbolEqualityComparer<TSymbol> : IEqualityComparer<TSymbol?>
     where TSymbol : ISymbol

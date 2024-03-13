@@ -10,7 +10,7 @@ public static class ModuleInitializer
     {
         VerifySourceGenerators.Initialize();
         
-        MoDMyNitro.SourceGenerators.Composition.TestHelper.EnsureLoaded();
-        MoDMyNitro.SourceGenerators.Composition.Attributes.TestHelper.EnsureLoaded();
+        Modmynitro.SourceGenerators.Composition.TestHelper.EnsureLoaded();
+        Modmynitro.SourceGenerators.Composition.Attributes.TestHelper.EnsureLoaded();
     }
 }

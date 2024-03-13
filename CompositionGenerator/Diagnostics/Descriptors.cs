@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace MoDMyNitro.SourceGenerators.Composition.Diagnostics;
+namespace Modmynitro.SourceGenerators.Composition.Diagnostics;
 
 public static class Descriptors
 {

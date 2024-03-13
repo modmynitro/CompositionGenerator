@@ -1,4 +1,4 @@
-﻿namespace MoDMyNitro.SourceGenerators.Composition.Attributes;
+﻿namespace Modmynitro.SourceGenerators.Composition.Attributes;
 
 [AttributeUsage(AttributeTargets.Field)]
 public sealed class CompositionAttribute : Attribute

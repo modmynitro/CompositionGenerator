@@ -1,4 +1,4 @@
-﻿using MoDMyNitro.SourceGenerators.Composition.SourceGenerators;
+﻿using Modmynitro.SourceGenerators.Composition.SourceGenerators;
 
 namespace CompositionGeneratorTests;
 

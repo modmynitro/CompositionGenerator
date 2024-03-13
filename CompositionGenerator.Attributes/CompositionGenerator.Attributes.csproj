@@ -5,8 +5,8 @@
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>MoDMyNitro.SourceGenerators.Composition.Attributes</RootNamespace>
-        <AssemblyName>MoDMyNitro.SourceGenerators.Composition.Attributes</AssemblyName>
+        <RootNamespace>Modmynitro.SourceGenerators.Composition.Attributes</RootNamespace>
+        <AssemblyName>Modmynitro.SourceGenerators.Composition.Attributes</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

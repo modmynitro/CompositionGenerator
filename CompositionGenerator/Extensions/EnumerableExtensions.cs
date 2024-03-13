@@ -1,4 +1,4 @@
-﻿namespace MoDMyNitro.SourceGenerators.Composition.Extensions;
+﻿namespace Modmynitro.SourceGenerators.Composition.Extensions;
 
 internal static class EnumerableExtensions
 {

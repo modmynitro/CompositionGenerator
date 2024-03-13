@@ -2,10 +2,10 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
-using MoDMyNitro.SourceGenerators.Composition.Diagnostics;
-using MoDMyNitro.SourceGenerators.Composition.SourceGenerators;
+using Modmynitro.SourceGenerators.Composition.Diagnostics;
+using Modmynitro.SourceGenerators.Composition.SourceGenerators;
 
-namespace MoDMyNitro.SourceGenerators.Composition.Analyzers;
+namespace Modmynitro.SourceGenerators.Composition.Analyzers;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public sealed class CompositionAttributeAnalyzer : DiagnosticAnalyzer

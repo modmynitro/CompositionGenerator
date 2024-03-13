@@ -7,8 +7,8 @@
         <ImplicitUsings>true</ImplicitUsings>
         <LangVersion>latest</LangVersion>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-        <RootNamespace>MoDMyNitro.SourceGenerators.Composition</RootNamespace>
-        <AssemblyName>MoDMyNitro.SourceGenerators.Composition</AssemblyName>
+        <RootNamespace>Modmynitro.SourceGenerators.Composition</RootNamespace>
+        <AssemblyName>Modmynitro.SourceGenerators.Composition</AssemblyName>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -49,9 +49,9 @@
         <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
         
         <!-- Pack the attributes dll in the analyzers/dotnet/cs path -->
-        <None Include="$(OutputPath)\MoDMyNitro.SourceGenerators.Composition.Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+        <None Include="$(OutputPath)\Modmynitro.SourceGenerators.Composition.Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 
         <!-- Pack the attributes dll in the lib\netstandard2.0 path -->
-        <None Include="$(OutputPath)\MoDMyNitro.SourceGenerators.Composition.Attributes.dll" Pack="true" PackagePath="lib/netstandard2.0" Visible="false" />
+        <None Include="$(OutputPath)\Modmynitro.SourceGenerators.Composition.Attributes.dll" Pack="true" PackagePath="lib/netstandard2.0" Visible="false" />
     </ItemGroup>
 </Project>
