@@ -31,8 +31,8 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --no-restore --configuration Release /property:Version=${{ steps.version.outputs.major_without_prefix }}
+        run: dotnet build --no-restore --configuration Release /property:Version=${{ steps.version.outputs.full_without_prefix }}
       - name: Test
         run: dotnet test --no-build --configuration Release --verbosity normal
       - name: Push Nuget
-        run: dotnet nuget push ./CompositionGenerator/bin/Release/Modmynitro.SourceGenerators.Composition.${{ steps.version.outputs.major_without_prefix }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ./CompositionGenerator/bin/Release/Modmynitro.SourceGenerators.Composition.${{ steps.version.outputs.full_without_prefix }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
