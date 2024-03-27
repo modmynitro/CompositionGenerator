@@ -1,6 +1,11 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Immutable;
+using System.Reflection.Metadata;
+using FluentAssertions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Diagnostics;
+using Microsoft.CodeAnalysis.Text;
+using Document = Microsoft.CodeAnalysis.Document;
 
 namespace CompositionGeneratorTests;
 
@@ -32,6 +37,18 @@ public static class TestHelper
         return Verifier.Verify(driver.GetRunResult());
     }
 
+    public static Diagnostic[] GetDiagnostics<TDiagnosticAnalyzer>(string source)
+        where TDiagnosticAnalyzer : DiagnosticAnalyzer, new()
+    {
+        var analyzer = new TDiagnosticAnalyzer();
+        
+        var compilation = CreateCompilation(source);
+        var diagnostics = Diagnostic.Create(analyzer.SupportedDiagnostics[0], Location.None);
+        var compilationWithAnalyzers = compilation.WithAnalyzers(ImmutableArray.Create((DiagnosticAnalyzer)analyzer));
+        var diags = compilationWithAnalyzers.GetAnalyzerDiagnosticsAsync().Result;
+        return diags.ToArray();
+    }
+    
     private static CSharpCompilation CreateCompilation(string source)
     {
         // Parse the provided string into a C# syntax tree

@@ -1,4 +1,4 @@
-﻿using MoDMyNitro.SourceGenerators.Composition.SourceGenerators;
+﻿using Modmynitro.SourceGenerators.Composition.SourceGenerators;
 
 namespace CompositionGeneratorTests;
 
@@ -10,7 +10,7 @@ public class CompositionSourceGeneratorTest
         // The source code to test
         var source =
             """
-            using MoDMyNitro.SourceGenerators.Composition.Attributes; 
+            using Modmynitro.SourceGenerators.Composition.Attributes; 
             
             public interface ITest
             {
@@ -42,7 +42,7 @@ public class CompositionSourceGeneratorTest
         // The source code to test
         var source =
             """
-            using MoDMyNitro.SourceGenerators.Composition.Attributes;
+            using Modmynitro.SourceGenerators.Composition.Attributes;
 
             public interface ITest
             {
@@ -71,7 +71,7 @@ public class CompositionSourceGeneratorTest
         // The source code to test
         var source =
             """
-            using MoDMyNitro.SourceGenerators.Composition.Attributes;
+            using Modmynitro.SourceGenerators.Composition.Attributes;
 
             public interface ITest
             {
@@ -100,7 +100,7 @@ public class CompositionSourceGeneratorTest
         // The source code to test
         var source =
             """
-            using MoDMyNitro.SourceGenerators.Composition.Attributes;
+            using Modmynitro.SourceGenerators.Composition.Attributes;
 
             public interface ITest
             {
@@ -129,7 +129,7 @@ public class CompositionSourceGeneratorTest
         // The source code to test
         var source =
             """
-            using MoDMyNitro.SourceGenerators.Composition.Attributes;
+            using Modmynitro.SourceGenerators.Composition.Attributes;
 
             public interface ITestBase
             {
@@ -165,7 +165,7 @@ public class CompositionSourceGeneratorTest
         // The source code to test
         var source =
             """
-            using MoDMyNitro.SourceGenerators.Composition.Attributes;
+            using Modmynitro.SourceGenerators.Composition.Attributes;
 
             public interface ITest<TInterface>
                 where TInterface : class

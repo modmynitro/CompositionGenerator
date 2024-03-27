@@ -1,9 +1,11 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.Reflection;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using MoDMyNitro.SourceGenerators.Composition.Extensions;
+using Modmynitro.SourceGenerators.Composition.Attributes;
+using Modmynitro.SourceGenerators.Composition.Extensions;
 
-namespace MoDMyNitro.SourceGenerators.Composition.SourceGenerators;
+namespace Modmynitro.SourceGenerators.Composition.SourceGenerators;
 
 /// <summary>
 /// https://andrewlock.net/creating-a-source-generator-part-1-creating-an-incremental-source-generator/
@@ -11,6 +13,8 @@ namespace MoDMyNitro.SourceGenerators.Composition.SourceGenerators;
 [Generator]
 public class CompositionSourceGenerator : IIncrementalGenerator
 {
+    private static readonly string AttributeName = typeof(CompositionAttribute).FullName ?? string.Empty;
+    
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
         var classDeclaration = context.SyntaxProvider
@@ -36,9 +40,8 @@ public class CompositionSourceGenerator : IIncrementalGenerator
             var attributeSymbol = attribute.AttributeClass;
 
             var fullName = attributeSymbol?.ConstructedFrom.ToDisplayString();
-
-            if (fullName is "MoDMyNitro.SourceGenerators.Composition.Attributes.CompositionAttribute" &&
-                attribute.ConstructorArguments[0] is { Value: INamedTypeSymbol typeSymbol })
+            
+            if (fullName == AttributeName && attribute.ConstructorArguments[0] is { Value: INamedTypeSymbol typeSymbol })
             {
                 yield return typeSymbol;
             }
@@ -66,14 +69,14 @@ public class CompositionSourceGenerator : IIncrementalGenerator
         if (symbol is not IFieldSymbol fieldSymbol)
             return null;
 
-        compositions.AddRange(GetCompositions(fieldSymbol));
+        compositions.AddRange(GetCompositions(fieldSymbol).Distinct(SymbolEqualityComparer<INamedTypeSymbol>.Default));
 
         if (compositions.Count == 0)
             return null;
 
         return new(
             fieldDeclarationSyntax,
-            compositions.Distinct(SymbolEqualityComparer<INamedTypeSymbol>.Default).ToList());
+            compositions);
     }
 
     private static void Execute(
@@ -102,9 +105,12 @@ public class CompositionSourceGenerator : IIncrementalGenerator
 
                 if (interfaceSymbol.IsGenericType)
                 {
-                    var fieldSymbol = (IFieldSymbol)compilation.GetSemanticModel(target.FieldDeclaration.SyntaxTree)
-                        .GetDeclaredSymbol(target.FieldDeclaration.Declaration.Variables[0]);
+                    var fieldSymbol = compilation.GetSemanticModel(target.FieldDeclaration.SyntaxTree)
+                        .GetDeclaredSymbol(target.FieldDeclaration.Declaration.Variables[0]) as IFieldSymbol;
 
+                    if (fieldSymbol is null)
+                        continue;
+                    
                     var unbound = interfaceSymbol.ConstructUnboundGenericType();
 
                     usedInterfaceSymbol = ((INamedTypeSymbol)fieldSymbol.Type).Interfaces

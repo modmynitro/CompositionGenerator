@@ -2,7 +2,7 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace MoDMyNitro.SourceGenerators.Composition.Extensions;
+namespace Modmynitro.SourceGenerators.Composition.Extensions;
 
 public static class ClassDeclarationSyntaxExtensions
 {

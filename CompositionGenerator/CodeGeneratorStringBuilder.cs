@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace MoDMyNitro.SourceGenerators.Composition;
+namespace Modmynitro.SourceGenerators.Composition;
 
 public class CodeGeneratorStringBuilder
 {

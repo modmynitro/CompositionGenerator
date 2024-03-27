@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace MoDMyNitro.SourceGenerators.Composition.Extensions;
+namespace Modmynitro.SourceGenerators.Composition.Extensions;
 
 internal static class SyntaxNodeExtensions
 {
